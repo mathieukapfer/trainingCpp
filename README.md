@@ -85,7 +85,7 @@ int main()
 
 ### More on lamda expression : the closure
 
-In lamba functon, the syntaxe '[]' is called the ''closure''.
+In lamba functon, the syntaxe ```[]``` is called the ''closure''.
 
 It define how to capture local variables : by reference, by value, all variables, only one.
 
@@ -95,12 +95,12 @@ It define how to capture local variables : by reference, by value, all variables
 
 | syntaxe | meaning |
 | ------- | --------|
-| [] | no capture |
-| [x, &y] | x by value, y by reference |
-| [=] | all by value |
-| [&] | all by reference |
-| [&, x] | all by reference except x|
-| [=, &x] | all by value except x|
+| ```[]``` | no capture |
+| ```[x, &y]``` | x by value, y by reference |
+| ```[=]``` | all by value |
+| ```[&]``` | all by reference |
+| ```[&, x]``` | all by reference except x|
+| ```[=, &x]``` | all by value except x|
 
   </td>
   <td>
@@ -127,11 +127,11 @@ int main()
 
 ### Bind
 
-The std::bind function is part of <functional>
+The ```std::bind``` function is part of  ```<functional>```.
 
 It allow to create a new fonction by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
 
-The function may be a function, functor, or method of object
+The function may be a function, functor, or method of object.
 
 
 ``` C
@@ -167,4 +167,6 @@ int main()
   return 0;
 }
 
-``` C
+```
+
+
