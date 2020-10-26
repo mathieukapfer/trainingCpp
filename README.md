@@ -2,7 +2,7 @@
 
 ## Function
 
-### Functor (C++98) and Lamdba function  (C++11)
+### Functor (C++98) and Lamdba expression (i.e. anonymous function)  (C++11)
 
 The two pieces of code do the same thing
   - create and initialize a vector with 3 int
@@ -46,10 +46,10 @@ int main()
 
   // use functor
   for_each (v.begin(), v.end(), f);
-  
+
   // use classic function
   for_each (v.begin(), v.end(), fct);
-  
+
   return 0;
 }
 
@@ -66,14 +66,14 @@ using namespace std;
 
 int main()
 {
-  // C++11: initialisation list 
+  // C++11: initialisation list
   //        work with stl container
   vector<int> v = {1, 2, 3};
 
-  // C++11: use lambda function 
+  // C++11: use lambda function
   //        (i.e. anonymous function)
   for_each
-    (v.begin(), v.end(), 
+    (v.begin(), v.end(),
        [] (int item) {cout << item << endl;});
 
 }
@@ -85,14 +85,14 @@ int main()
 
 ### More on lamda expression : the closure
 
-In lamba functon, the syntaxe '[]' is called the ''closure''. 
+In lamba functon, the syntaxe '[]' is called the ''closure''.
 
 It define how to capture local variables : by reference, by value, all variables, only one.
 
 <table>
   <tr>
   <td>
-    
+
 | syntaxe | meaning |
 | ------- | --------|
 | [] | no capture |
@@ -101,10 +101,10 @@ It define how to capture local variables : by reference, by value, all variables
 | [&] | all by reference |
 | [&, x] | all by reference except x|
 | [=, &x] | all by value except x|
-  
+
   </td>
   <td>
-  
+
 ```C++
 int main()
 {
@@ -113,7 +113,7 @@ int main()
 
   // lambda funct with capture (of local variable)
   int sum = 0;
-  
+
   for_each
     (v.begin(), v.end(), [&sum] (int item) {sum += item;});
 
@@ -124,3 +124,47 @@ int main()
   </td>
   </table>
 
+
+### Bind
+
+The std::bind function is part of <functional>
+
+It allow to create a new fonction by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
+
+The function may be a function, functor, or method of object
+
+
+``` C
+#include <functional>
+#include <iostream>
+
+// functor
+struct F {
+  int operator() (int a, int b) {
+    return a + b;
+  }
+} f;
+
+// function
+int add(int a, int b) {
+  return a + b;
+}
+
+int main()
+{
+
+  // call functor
+  std::cout << f(1,2) << std::endl;
+
+  // bind function - keep one parameter
+  std::function<int (int)> g = std::bind(f, std::placeholders::_1, 1000);  // work with functor i.e. function object
+  std::function<int (int)> h = std::bind(add, std::placeholders::_1, 2000);// work with function
+
+  // call binding function
+  std::cout << g(1) << std::endl;
+  std::cout << h(1) << std::endl;
+
+  return 0;
+}
+
+``` C
