@@ -86,7 +86,8 @@ int main()
 ### More on lamda expression : the closure
 
 In lamba functon, the syntaxe '[]' is called the ''closure''. 
-It define how to capture local variables : by reference, by value, all variables, only one:
+
+It define how to capture local variables : by reference, by value, all variables, only one.
 
 <table>
   <tr>
