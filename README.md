@@ -138,13 +138,6 @@ The function may be a function, functor, or method of object.
 #include <functional>
 #include <iostream>
 
-// functor
-struct F {
-  int operator() (int a, int b) {
-    return a + b;
-  }
-} f;
-
 // function
 int add(int a, int b) {
   return a + b;
@@ -157,12 +150,10 @@ int main()
   std::cout << f(1,2) << std::endl;
 
   // bind function - keep one parameter
-  std::function<int (int)> g = std::bind(f, std::placeholders::_1, 1000);  // work with functor i.e. function object
-  std::function<int (int)> h = std::bind(add, std::placeholders::_1, 2000);// work with function
+  std::function<int (int)> add_1000 = std::bind(add, std::placeholders::_1, 1000);
 
   // call binding function
-  std::cout << g(1) << std::endl;
-  std::cout << h(1) << std::endl;
+  std::cout << add_1000(1) << std::endl;
 
   return 0;
 }
