@@ -88,6 +88,10 @@ int main()
 In lamba functon, the syntaxe '[]' is called the ''closure''. 
 It define how to capture local variables : by reference, by value, all variables, only one:
 
+<table>
+  <tr>
+  <td>
+    
 | syntaxe | meaning |
 | ------- | --------|
 | [] | no capture |
@@ -96,7 +100,10 @@ It define how to capture local variables : by reference, by value, all variables
 | [&] | all by reference |
 | [&, x] | all by reference except x|
 | [=, &x] | all by value except x|
-
+  
+  </td>
+  <td>
+  
 ```C++
 int main()
 {
@@ -112,5 +119,7 @@ int main()
   cout << "sum:" << sum << endl;
 }
 ```
-
+  </tr>
+  </td>
+  </table>
 
