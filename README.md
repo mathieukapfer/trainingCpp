@@ -64,12 +64,15 @@ using namespace std;
 
 int main()
 {
-  // C++11: initialisation list wotk with stl container
+  // C++11: initialisation list 
+  //        work with stl container
   vector<int> v = {1, 2, 3};
 
-  // C++11: use lambda function (i.e. anonymous function)
+  // C++11: use lambda function 
+  //        (i.e. anonymous function)
   for_each
-    (v.begin(), v.end(), [] (int item) {cout << item << endl;});
+    (v.begin(), v.end(), 
+       [] (int item) {cout << item << endl;});
 
 }
 ```
