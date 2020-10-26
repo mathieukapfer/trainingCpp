@@ -1,6 +1,8 @@
 # Training C++11
 
-## Functor (C++98) and Lamdba function  (C++11)
+## Function
+
+### Functor (C++98) and Lamdba function  (C++11)
 
 The two pieces of code do the same thing
   - create and initialize a vector with 3 int
@@ -78,4 +80,37 @@ int main()
 ```
 </td>
 </tr>
-</table
+</table>
+
+
+### More on lamda expression : the closure
+
+In lamba functon, the syntaxe '[]' is called the ''closure''. 
+It define how to capture local variables : by reference, by value, all variables, only one:
+
+| syntaxe | meaning |
+| ------- | --------|
+| [] | no capture |
+| [x, &y] | x by value, y by reference |
+| [=] | all by value |
+| [&] | all by reference |
+| [&, x] | all by reference except x|
+| [=, &x] | all by value except x|
+
+```C++
+int main()
+{
+  // stl container with initialisation list (as table)
+  vector<int> v = {1, 2, 3};
+
+  // lambda funct with capture (of local variable)
+  int sum = 0;
+  
+  for_each
+    (v.begin(), v.end(), [&sum] (int item) {sum += item;});
+
+  cout << "sum:" << sum << endl;
+}
+```
+
+
