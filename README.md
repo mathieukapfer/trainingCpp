@@ -70,7 +70,7 @@ int main()
   //        work with stl container
   vector<int> v = {1, 2, 3};
 
-  // C++11: use lambda function
+  // C++11: use lambda expression
   //        (i.e. anonymous function)
   for_each
     (v.begin(), v.end(),
