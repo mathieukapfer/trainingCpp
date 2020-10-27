@@ -164,7 +164,7 @@ int main()
 
 C++11 provide the move constructor and move assignator
 
-Hereafter is how the declaration looks like and when it is used 
+Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
 
 <table>
   <tr>
