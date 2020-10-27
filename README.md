@@ -131,7 +131,7 @@ The ```std::bind``` function is part of  ```<functional>```.
 
 It allow to create a new fonction by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
 
-The function may be a function, functor, or method of object.
+The binded function may be a function, functor, or method of object.
 
 
 ``` C
