@@ -149,7 +149,7 @@ int main()
   // call functor
   std::cout << f(1,2) << std::endl;
 
-  // bind function - keep one parameter
+  // bind function - keep one parameter (the second one), replace the first one by 1000
   std::function<int (int)> add_1000 = std::bind(add, std::placeholders::_1, 1000);
 
   // call binding function
