@@ -216,7 +216,8 @@ int main(int argc, char *argv[])
 {
   // test constr
   MyClass c;               // default constr
-  MyClass x();             // ! warning this is the declaration of a function !
+  MyClass x();             // ! warning this is the declaration 
+                           //   of a function !
   MyClass d(c);            // copy constr
   MyClass e(std::move(c)); // move constr
   MyClass f1(2);           // user defined constr with 1 parameter
