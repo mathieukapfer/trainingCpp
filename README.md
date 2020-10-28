@@ -263,6 +263,7 @@ class BigClass
   static const int TABLE_SIZE=100;
   int *table;
 
+ public:
   //! Default constructor
   BigClass():table(new int[TABLE_SIZE]) {
   }
