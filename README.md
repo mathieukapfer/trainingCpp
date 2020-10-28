@@ -255,7 +255,7 @@ The idea behind the ```move``` constructor is to tranfer the ownerchip of pointe
 
 Hereafter is a good implementation when the class carry a pointer
 
-```
+```C++
 class BigClass
 {
 
