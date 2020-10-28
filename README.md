@@ -288,12 +288,13 @@ class BigClass
 
 TODO
 
-#### explicite VS implicite call ! (the concept of RVALUE)
+#### explicite VS implicite call : the concept of RVALUE
 
  ##### implicit call
- ```move``` automatically called by compiler on RVALUE (i.e return of a function)
- (RVALUE means right value in the expression 'a = b', mean the RVALUE is not targeted to receive any value
-
+ ```move``` constructor or operator is automatically called by compiler on RVALUE
+ 
+ RVALUE means right value in the expression 'a = f()' i.e. the RVALUE provide a value (and can not receive one) as do the return value of a function
+ 
  ##### explicit call
  ```move``` can be explicitly called by ```std::move``` (that return a RVALUE!)
 
