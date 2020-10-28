@@ -251,7 +251,7 @@ operator= move
   </table>
 
 
-The idea behind the ```move``` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu and memory.
+The idea behind the ```move``` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
 
 Hereafter is a good implementation when the class carry a pointer
 
