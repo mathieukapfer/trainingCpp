@@ -164,6 +164,7 @@ int main()
 
 C++11 provide the move constructor and move assignment operator
 
+#### declaration and explicite call
 Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
 
 <table>
@@ -251,6 +252,8 @@ operator= move
   </table>
 
 
+#### effective implementation (in case of class with pointer)
+
 The idea behind the ```move``` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
 
 Hereafter is a good implementation when the class carry a pointer
@@ -280,6 +283,14 @@ class BigClass
   
 }
 ```
+
+#### effective implementation (in case of class with stl container)
+
+TODO
+
+#### implicite call ! (the concept of RVALUE)
+
+TODO
 
 
 
