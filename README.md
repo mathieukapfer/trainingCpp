@@ -162,7 +162,7 @@ int main()
 
 ### Move
 
-C++11 provide the move constructor and move assignator
+C++11 provide the move constructor and move assignment operator
 
 Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
 
