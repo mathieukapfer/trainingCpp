@@ -251,4 +251,36 @@ operator= move
   </table>
 
 
+The idea behind the ```move``` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu and memory.
+
+Hereafter is a good implementation when the class carry a pointer
+
+```
+class BigClass
+{
+
+ private:
+  static const int TABLE_SIZE=100;
+  int *table;
+
+  //! Default constructor
+  BigClass():table(new int[TABLE_SIZE]) {
+  }
+
+  //! Move constructor
+  BigClass(BigClass &&other) noexcept {
+    std::cout << "Move constructor called" << std::endl;
+    // copy the pointer ;
+    table = other.table;
+    // reset copied pointer
+    other.table = nullptr;
+    // => the ownerchip has changed
+  };
+  
+}
+```
+
+
+
+
 
