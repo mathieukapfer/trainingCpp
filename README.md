@@ -2,12 +2,15 @@
 
 ## Function
 
-### Functor (C++98) and Lamdba expression (i.e. anonymous function)  (C++11)
+### Functor (C++98) and Lamdba expression (C++11)
+
+Definition
+ - a functor is a object with overload of operator `()`
+ - a lambda expression is also called anonymous function 
 
 The two pieces of code do the same thing
-  - create and initialize a vector with 3 int
+  - create and initialize a vector of 3 int
   - display it
-
 
 <table>
 <tr>
