@@ -306,7 +306,7 @@ class BigClass
 
 #### implementation (in case of class with stl container)
 
-Just use the slt 'move' method
+Just use the slt `std::move(c)` methode on stl object.
 
 #### explicite VS implicite call : the concept of RVALUE
 
