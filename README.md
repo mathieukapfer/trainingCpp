@@ -23,7 +23,7 @@ The two pieces of code do the same thing
 <tr>
 <td>
 
-<section>
+<div markdown="1">
   
 ```C++
   
@@ -64,8 +64,8 @@ int main()
 }
 
 ```
+</div>
 
-</section>
 
 </td>
 <td>
