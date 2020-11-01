@@ -130,7 +130,7 @@ int main()
 
   for_each
     (v.begin(), v.end(), 
-         [&sum] (int item) {sum += item;});
+      [&sum] (int item) {sum += item;});
 
   cout << "sum:" << sum << endl;
 }
