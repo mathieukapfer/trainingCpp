@@ -16,7 +16,10 @@ The two pieces of code do the same thing
 <tr>
 <td>
 
+<section>
+  
 ```C++
+  
 #include <algorithm>  // for_each (C++98)
 #include <vector>
 #include <iostream>
@@ -55,9 +58,12 @@ int main()
 
 ```
 
+</section>
+
 </td>
 <td>
-
+<section>
+  
 ```C
 #include <algorithm>
 #include <vector>
@@ -80,6 +86,7 @@ int main()
 }
 ```
 
+</section>
 </td>
 </tr>
 </table>
