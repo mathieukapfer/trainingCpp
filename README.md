@@ -8,12 +8,6 @@ The two pieces of code do the same thing
   - create and initialize a vector with 3 int
   - display it
 
-```C++
-  // this is a test of code bloc randering
-#include <algorithm>  // for_each (C++98)
-#include <vector>
-#include <iostream>
-```
 
 <table>
 <tr>
@@ -64,12 +58,11 @@ int main()
 }
 
 ```
+
 </div>
-
-
 </td>
 <td>
-<section>
+<div markdown="1">
   
 ```C
 #include <algorithm>
@@ -93,7 +86,7 @@ int main()
 }
 ```
 
-</section>
+</div>
 </td>
 </tr>
 </table>
@@ -120,7 +113,8 @@ It define how to capture local variables : by reference, by value, all variables
 
 </td>
 <td>
-
+<div markdown="1">
+  
 ```C
 int main()
 {
@@ -137,6 +131,7 @@ int main()
 }
 ```
 
+</div>
 </td>
 </tr>
 </table>
@@ -185,7 +180,9 @@ Hereafter is how the declaration looks like and when it is used (note that the '
 <table>
   <tr>
   <td>
-    
+
+<div markdown="1">
+
 ```C
 class MyClass
 {
@@ -223,9 +220,11 @@ class MyClass
 
 };
 ```
-
+</div>
 </td>
 <td>
+  
+  <div markdown="1">
   
 ```C++
 int main(int argc, char *argv[])
@@ -262,7 +261,7 @@ operator= move
 ~MyClass  
 
 ```
-
+<div>
 </td>
 </tr>
 </table>
@@ -317,6 +316,7 @@ TODO
 <table>
   <tr>
   <td>
+  <div markdown="1">
 
 ```C++
 
@@ -356,8 +356,10 @@ int main(int argc, char *argv[])
 
 ```
 
-  </td>
-  <td>
+</div>
+</td>
+<td>
+<div markdown="1">
 
 ```
 make move-getvector && ./move-getvector 
@@ -370,8 +372,9 @@ after fct : v3=4 5 6
 
 ```
 
-  </td>
-  </tr>
+</div>
+</td>
+</tr>
 </table>
 
 
