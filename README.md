@@ -102,6 +102,8 @@ It define how to capture local variables : by reference, by value, all variables
   <tr>
   <td>
 
+<div markdown="1">
+
 | syntaxe | meaning |
 |:--------|:--------|
 | `[]` | no capture |
@@ -111,6 +113,7 @@ It define how to capture local variables : by reference, by value, all variables
 | `[&, x]` | all by reference except x|
 | `[=, &x]` | all by value except x|
 
+</div>
 </td>
 <td>
 <div markdown="1">
@@ -220,11 +223,11 @@ class MyClass
 
 };
 ```
+
 </div>
 </td>
 <td>
-  
-  <div markdown="1">
+<div markdown="1">
   
 ```C++
 int main(int argc, char *argv[])
@@ -261,7 +264,7 @@ operator= move
 ~MyClass  
 
 ```
-<div>
+</div>
 </td>
 </tr>
 </table>
