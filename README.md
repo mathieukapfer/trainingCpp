@@ -16,7 +16,7 @@ The two pieces of code do the same thing
 <tr>
 <td>
 
-```C++
+```C
 #include <algorithm>  // for_each (C++98)
 #include <vector>
 #include <iostream>
@@ -58,7 +58,7 @@ int main()
 </td>
 <td>
 
-```C++
+```C
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -104,10 +104,10 @@ It define how to capture local variables : by reference, by value, all variables
 | `[&, x]` | all by reference except x|
 | `[=, &x]` | all by value except x|
 
-  </td>
-  <td>
+</td>
+<td>
 
-```C++
+```C
 int main()
 {
   // stl container with initialisation list (as table)
@@ -159,7 +159,6 @@ int main()
 
   return 0;
 }
-
 ```
 
 ### Move
@@ -173,7 +172,7 @@ Hereafter is how the declaration looks like and when it is used (note that the '
   <tr>
   <td>
     
-```C++
+```C
 class MyClass
 {
  public:
