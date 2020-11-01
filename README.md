@@ -328,7 +328,8 @@ Just use the slt 'move' method
 #include <vector>
 #include <iostream>
 
-// a function to demonstrate the explicity call of move operator
+// a function to demonstrate the explicity call 
+//  of move operator
 std::vector<int> getVector() {
   std::vector<int> tmp = {4, 5, 6};
   return tmp;
