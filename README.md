@@ -16,7 +16,7 @@ The two pieces of code do the same thing
 <tr>
 <td>
 
-```C
+```C++
 #include <algorithm>  // for_each (C++98)
 #include <vector>
 #include <iostream>
