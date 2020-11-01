@@ -272,7 +272,7 @@ operator= move
 </table>
 
 
-#### effective implementation (in case of class with pointer)
+#### implementation (in case of class with pointer)
 
 The idea behind the `move` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
 
@@ -304,18 +304,18 @@ class BigClass
 }
 ```
 
-#### effective implementation (in case of class with stl container)
+#### implementation (in case of class with stl container)
 
-TODO
+Just use the slt 'move' method
 
 #### explicite VS implicite call : the concept of RVALUE
 
- ##### implicit call
+##### implicit call
  `move` constructor or operator is automatically called by compiler on RVALUE
  
  RVALUE means right value in the expression 'a = f()' i.e. the RVALUE provide a value (and can not receive one) as do the return value of a function
  
- ##### explicit call
+##### explicit call
  `move` can be explicitly called by `std::move` (that return a RVALUE!)
 
 <table>
