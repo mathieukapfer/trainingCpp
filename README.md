@@ -54,7 +54,9 @@ int main()
 }
 
 ```
+
 </td>
+
 <td>
 
 ```C++
@@ -78,6 +80,7 @@ int main()
 
 }
 ```
+
 </td>
 </tr>
 </table>
@@ -85,7 +88,7 @@ int main()
 
 ### More on lamda expression : the closure
 
-In lamba functon, the syntaxe ```[]``` is called the ''closure''.
+In lamba functon, the syntaxe `[]` is called the ''closure''.
 
 It define how to capture local variables : by reference, by value, all variables, only one.
 
@@ -94,13 +97,13 @@ It define how to capture local variables : by reference, by value, all variables
   <td>
 
 | syntaxe | meaning |
-| ------- | --------|
-| ```[]``` | no capture |
-| ```[x, &y]``` | x by value, y by reference |
-| ```[=]``` | all by value |
-| ```[&]``` | all by reference |
-| ```[&, x]``` | all by reference except x|
-| ```[=, &x]``` | all by value except x|
+|:--------|:--------|
+| `[]` | no capture |
+| `[x, &y]` | x by value, y by reference |
+| `[=]` | all by value |
+| `[&]` | all by reference |
+| `[&, x]` | all by reference except x|
+| `[=, &x]` | all by value except x|
 
   </td>
   <td>
@@ -120,21 +123,21 @@ int main()
   cout << "sum:" << sum << endl;
 }
 ```
-  </td>
-  </tr>
-  </table>
 
+</td>
+</tr>
+</table>
 
 ### Bind
 
-The ```std::bind``` function is part of  ```<functional>```.
+The `std::bind` function is part of  `<functional>`.
 
 It allow to create a new fonction by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
 
 The binded function may be a function, functor, or method of object.
 
 
-``` C
+```C
 #include <functional>
 #include <iostream>
 
@@ -209,8 +212,8 @@ class MyClass
 };
 ```
 
-  </td>
-  <td>
+</td>
+<td>
   
 ```C++
 int main(int argc, char *argv[])
@@ -228,7 +231,7 @@ int main(int argc, char *argv[])
 ```
 With the following definition: 
 
-  ```#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;```
+```#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;```
   
 the execution produce:
 
@@ -247,14 +250,14 @@ operator= move
 
 ```
 
-  </td>
-  </tr>
-  </table>
+</td>
+</tr>
+</table>
 
 
 #### effective implementation (in case of class with pointer)
 
-The idea behind the ```move``` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
+The idea behind the `move` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
 
 Hereafter is a good implementation when the class carry a pointer
 
@@ -291,12 +294,12 @@ TODO
 #### explicite VS implicite call : the concept of RVALUE
 
  ##### implicit call
- ```move``` constructor or operator is automatically called by compiler on RVALUE
+ `move` constructor or operator is automatically called by compiler on RVALUE
  
  RVALUE means right value in the expression 'a = f()' i.e. the RVALUE provide a value (and can not receive one) as do the return value of a function
  
  ##### explicit call
- ```move``` can be explicitly called by ```std::move``` (that return a RVALUE!)
+ `move` can be explicitly called by `std::move` (that return a RVALUE!)
 
 <table>
   <tr>
