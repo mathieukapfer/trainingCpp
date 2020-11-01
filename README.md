@@ -121,14 +121,16 @@ It define how to capture local variables : by reference, by value, all variables
 ```C
 int main()
 {
-  // stl container with initialisation list (as table)
+  // stl container 
   vector<int> v = {1, 2, 3};
 
-  // lambda funct with capture (of local variable)
+  // lambda funct 
+  // with capture (of local variable)
   int sum = 0;
 
   for_each
-    (v.begin(), v.end(), [&sum] (int item) {sum += item;});
+    (v.begin(), v.end(), 
+         [&sum] (int item) {sum += item;});
 
   cout << "sum:" << sum << endl;
 }
