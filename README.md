@@ -8,6 +8,13 @@ The two pieces of code do the same thing
   - create and initialize a vector with 3 int
   - display it
 
+```C++
+  // this is a test of code bloc randering
+#include <algorithm>  // for_each (C++98)
+#include <vector>
+#include <iostream>
+```
+
 <table>
 <tr>
 <th> C++98 style </th>
