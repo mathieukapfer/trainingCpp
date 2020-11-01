@@ -56,7 +56,6 @@ int main()
 ```
 
 </td>
-
 <td>
 
 ```C++
@@ -229,9 +228,10 @@ int main(int argc, char *argv[])
 }
 
 ```
+
 With the following definition: 
 
-```#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;```
+`#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;`
   
 the execution produce:
 
