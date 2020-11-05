@@ -1,12 +1,88 @@
 # Training C++11
 
+## Canonical class declaration
+<table>
+<tr>
+<th> C++98 style </th>
+<th> C++11 style </th>
+</tr>
+<tr>
+<td>
+
+<div markdown="1">
+
+```C++
+class MyClass
+{
+ public:
+  //! Default constructor
+  MyClass();
+
+  //! Copy constructor
+  MyClass(const MyClass &other)
+
+  //! Assignment operator
+  MyClass& operator=(const MyClass &other)
+
+  //! Destructor
+  virtual ~MyClass();
+
+};
+
+```
+
+</div>
+</td>
+<td>
+<div markdown="1">
+
+```C++
+class MyClass
+{
+ public:
+  //! Default constructor
+  MyClass() = default;
+
+  //! Copy constructor
+  MyClass(const MyClass &other) = default;
+
+  //! Move constructor
+  MyClass(MyClass &&other) noexcept = default;
+
+  //! Destructor
+  virtual ~MyClass() noexcept = default;
+
+  //! Copy assignment operator
+  MyClass& operator=(const MyClass &other) = default;
+
+  //! Move assignment operator
+  MyClass& operator=(MyClass &&other) noexcept = default;
+
+};
+```
+
+</div>
+</td>
+</tr>
+</table>
+
+C++11 new features:
+  - add `move` constructor and `move` assignment operator
+  - allow to define constructor, destructor, assignment each by
+    - `= default`: keep the default behavour
+    - `= delete`: forbidden the operation
+  - allow to qualify a methode with
+    - `override`: forbidden the overload
+    - `final`: forbidden derivation
+
+
 ## Function
 
 ### Functor (C++98) and Lamdba expression (C++11)
 
 Definition
  - a functor is a object with overload of operator `()`
- - a lambda expression is also called anonymous function 
+ - a lambda expression is a function without name. It is also called anonymous function
 
 The two pieces of code do the same thing
   - create and initialize a vector of 3 int
