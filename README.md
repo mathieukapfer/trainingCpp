@@ -1,6 +1,10 @@
 # Training C++11
+  - [class](#class)
+  - [function](#function)
+  - [template](#template)
 
-## Canonical class declaration
+## Class
+### Canonical class declaration
 <table>
 <tr>
 <th> C++98 style </th>
@@ -76,6 +80,212 @@ C++11 new features:
     - `final`: forbidden derivation
 
 
+### Move
+
+C++11 provide the move constructor and move assignment operator
+
+#### declaration and explicite call
+Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
+
+<table>
+  <tr>
+  <td>
+
+<div markdown="1">
+
+```C
+class MyClass
+{
+ public:
+  //! Default constructor
+  MyClass():m_i(0)
+    { LOG_ENTER("default"); }
+
+  //! Another constructor
+  MyClass(int i): m_i(i)
+    { LOG_ENTER("1 parameters"); }
+
+  //! Copy constructor
+  MyClass(const MyClass &other)
+    { LOG_ENTER("copy");}
+
+  //! Move constructor (C++11)
+  MyClass(MyClass &&other) noexcept
+    { LOG_ENTER("move"); }
+
+  //! Destructor
+  virtual ~MyClass() noexcept
+    { LOG_ENTER(""); }
+
+  //! Copy assignment operator
+  MyClass& operator=(const MyClass &other)
+    { LOG_ENTER("copy"); return *this;}
+
+  //! Move assignment operator (C++11)
+  MyClass& operator=(MyClass &&other) noexcept
+    { LOG_ENTER("move"); return *this;}
+
+  private:
+  int m_i;
+
+};
+```
+
+</div>
+</td>
+<td>
+<div markdown="1">
+
+```C++
+int main(int argc, char *argv[])
+{
+  // test constr
+  MyClass c;               // default constr
+  MyClass x();             // ! warning this is the declaration
+                           //   of a function !
+  MyClass d(c);            // copy constr
+  MyClass e(std::move(c)); // move constr
+  MyClass f1(2);           // user defined constr with 1 parameter
+  MyClass f2{1};           // same as above
+}
+
+```
+
+With the following definition:
+
+`#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;`
+
+the execution produce:
+
+```
+MyClass default
+MyClass copy
+MyClass move
+MyClass 1 parameters
+MyClass 1 parameters
+operator= copy
+operator= move
+~MyClass
+~MyClass
+~MyClass
+~MyClass
+
+```
+</div>
+</td>
+</tr>
+</table>
+
+
+#### implementation when class contains pointer
+
+The idea behind the `move` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
+
+Hereafter is a good implementation when the class carry a pointer
+
+```C++
+class BigClass
+{
+
+ private:
+  static const int TABLE_SIZE=100;
+  int *table;
+
+ public:
+  //! Default constructor
+  BigClass():table(new int[TABLE_SIZE]) {
+  }
+
+  //! Move constructor
+  BigClass(BigClass &&other) noexcept {
+    std::cout << "Move constructor called" << std::endl;
+    // copy the pointer ;
+    table = other.table;
+    // reset copied pointer
+    other.table = nullptr;
+    // => the ownerchip has changed
+  };
+
+}
+```
+
+#### implementation when class contain stl container
+
+Just use the slt `std::move(x)` methode on each member.
+
+#### explicite VS implicite call : the concept of RVALUE
+
+##### implicit call
+ `move` constructor or operator is automatically called by compiler on RVALUE
+
+##### explicit call
+ `move` can be explicitly called by `std::move` (that return a RVALUE!)
+
+<table>
+  <tr>
+  <td>
+  <div markdown="1">
+
+```C++
+
+#include <vector>
+#include <iostream>
+
+// a function to demonstrate the implicite call
+//  of move operator
+std::vector<int> getVector() {
+  std::vector<int> tmp = {4, 5, 6};
+  return tmp;
+}
+
+// helper to display container
+#define display(v, msg)                         \
+  std::cout << std::endl << msg ": " << #v "="; \
+  for (int i:v) {std::cout << i << " ";};
+
+int main(int argc, char *argv[])
+{
+
+  std::vector<int> v1 = {1, 2, 3};
+  std::vector<int> v2, v3;
+
+  display(v1,"after init");
+
+  // explicity called
+  v2 = std::move(v1);
+  display(v1, "after move");
+  display(v2, "after move");
+
+  // implicilty called
+  v3 = getVector();
+  display(v3, "after fct ");
+
+  return 0;
+}
+
+```
+
+</div>
+</td>
+<td>
+<div markdown="1">
+
+```
+make move-getvector && ./move-getvector
+g++     move-getvector.cpp   -o move-getvector
+
+after init: v1=1 2 3
+after move: v1=
+after move: v2=1 2 3
+after fct : v3=4 5 6
+
+```
+
+</div>
+</td>
+</tr>
+</table>
+
 ## Function
 
 ### Functor (C++98) and Lamdba expression (C++11)
@@ -97,9 +307,9 @@ The two pieces of code do the same thing
 <td>
 
 <div markdown="1">
-  
+
 ```C++
-  
+
 #include <algorithm>  // for_each (C++98)
 #include <vector>
 #include <iostream>
@@ -142,7 +352,7 @@ int main()
 </td>
 <td>
 <div markdown="1">
-  
+
 ```C
 #include <algorithm>
 #include <vector>
@@ -196,19 +406,19 @@ It define how to capture local variables : by reference, by value, all variables
 </td>
 <td>
 <div markdown="1">
-  
+
 ```C
 int main()
 {
-  // stl container 
+  // stl container
   vector<int> v = {1, 2, 3};
 
-  // lambda funct 
+  // lambda funct
   // with capture (of local variable)
   int sum = 0;
 
   for_each
-    (v.begin(), v.end(), 
+    (v.begin(), v.end(),
       [&sum] (int item) {sum += item;});
 
   cout << "sum:" << sum << endl;
@@ -253,216 +463,3 @@ int main()
   return 0;
 }
 ```
-
-## Move
-
-C++11 provide the move constructor and move assignment operator
-
-### declaration and explicite call
-Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
-
-<table>
-  <tr>
-  <td>
-
-<div markdown="1">
-
-```C
-class MyClass
-{
- public:
-  //! Default constructor
-  MyClass():m_i(0)
-    { LOG_ENTER("default"); }
-
-  //! Another constructor
-  MyClass(int i): m_i(i)
-    { LOG_ENTER("1 parameters"); }
-
-  //! Copy constructor
-  MyClass(const MyClass &other)
-    { LOG_ENTER("copy");}
-
-  //! Move constructor (C++11)
-  MyClass(MyClass &&other) noexcept
-    { LOG_ENTER("move"); }
-
-  //! Destructor
-  virtual ~MyClass() noexcept
-    { LOG_ENTER(""); }
-
-  //! Copy assignment operator
-  MyClass& operator=(const MyClass &other)
-    { LOG_ENTER("copy"); return *this;}
-
-  //! Move assignment operator (C++11)
-  MyClass& operator=(MyClass &&other) noexcept
-    { LOG_ENTER("move"); return *this;}
-
-  private:
-  int m_i;
-
-};
-```
-
-</div>
-</td>
-<td>
-<div markdown="1">
-  
-```C++
-int main(int argc, char *argv[])
-{
-  // test constr
-  MyClass c;               // default constr
-  MyClass x();             // ! warning this is the declaration 
-                           //   of a function !
-  MyClass d(c);            // copy constr
-  MyClass e(std::move(c)); // move constr
-  MyClass f1(2);           // user defined constr with 1 parameter
-  MyClass f2{1};           // same as above
-}
-
-```
-
-With the following definition: 
-
-`#define LOG_ENTER(str) cout << __FUNCTION__ << " " str " " << endl;`
-  
-the execution produce:
-
-```
-MyClass default 
-MyClass copy 
-MyClass move 
-MyClass 1 parameters 
-MyClass 1 parameters 
-operator= copy 
-operator= move 
-~MyClass  
-~MyClass  
-~MyClass  
-~MyClass  
-
-```
-</div>
-</td>
-</tr>
-</table>
-
-
-### implementation (in case of class with pointer)
-
-The idea behind the `move` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
-
-Hereafter is a good implementation when the class carry a pointer
-
-```C++
-class BigClass
-{
-
- private:
-  static const int TABLE_SIZE=100;
-  int *table;
-
- public:
-  //! Default constructor
-  BigClass():table(new int[TABLE_SIZE]) {
-  }
-
-  //! Move constructor
-  BigClass(BigClass &&other) noexcept {
-    std::cout << "Move constructor called" << std::endl;
-    // copy the pointer ;
-    table = other.table;
-    // reset copied pointer
-    other.table = nullptr;
-    // => the ownerchip has changed
-  };
-  
-}
-```
-
-### implementation (in case of class with stl container)
-
-Just use the slt `std::move(c)` methode on stl object.
-
-### explicite VS implicite call : the concept of RVALUE
-
-#### implicit call
- `move` constructor or operator is automatically called by compiler on RVALUE
- 
- RVALUE means right value in the expression 'a = f()' i.e. the RVALUE provide a value (and can not receive one) as do the return value of a function
- 
-#### explicit call
- `move` can be explicitly called by `std::move` (that return a RVALUE!)
-
-<table>
-  <tr>
-  <td>
-  <div markdown="1">
-
-```C++
-
-#include <vector>
-#include <iostream>
-
-// a function to demonstrate the explicity call 
-//  of move operator
-std::vector<int> getVector() {
-  std::vector<int> tmp = {4, 5, 6};
-  return tmp;
-}
-
-// helper to display container
-#define display(v, msg)                         \
-  std::cout << std::endl << msg ": " << #v "="; \
-  for (int i:v) {std::cout << i << " ";};
-
-int main(int argc, char *argv[])
-{
-
-  std::vector<int> v1 = {1, 2, 3};
-  std::vector<int> v2, v3;
-
-  display(v1,"after init");
-
-  // explicity called
-  v2 = std::move(v1);
-  display(v1, "after move");
-  display(v2, "after move");
-
-  // implicilty called
-  v3 = getVector();
-  display(v3, "after fct ");
-
-  return 0;
-}
-
-```
-
-</div>
-</td>
-<td>
-<div markdown="1">
-
-```
-make move-getvector && ./move-getvector 
-g++     move-getvector.cpp   -o move-getvector
-
-after init: v1=1 2 3 
-after move: v1=
-after move: v2=1 2 3 
-after fct : v3=4 5 6 
-
-```
-
-</div>
-</td>
-</tr>
-</table>
-
-
-
-
-
