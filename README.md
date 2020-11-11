@@ -90,15 +90,14 @@ C++11 new features:
     - `final`: forbidden derivation
 
 ### Usages
-Have a look on when each canonical method is called (note that the implementations are not effective here, but just a log is print)
+Let's inspect when each canonical method is called.
+(note that the implementations are not effective here, but just logged)
 
 <table>
   <tr>
   <td>
 
 <div markdown="1">
-Let's inspect when each canonical method is called.
-(note that the implementations are not effective here, but just a log is print)
 
 ```C
 class MyClass
