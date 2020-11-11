@@ -8,8 +8,8 @@
        - [implementation when class contain stl container](#implementation-when-class-contains-stl-container)
        - [implicit call on RVALUE](#implicit-call-on-rvalue)
   - [Function](#function)
-     - [Functor and Lamdba expression](#functor-and-lamdba-expression)
-     - [Lamda expression closure](#lamda-expression-closure)
+     - [Functor and Lambda expression](#functor-and-lambda-expression)
+     - [Lambda expression closure](#lambda-expression-closure)
      - [Bind](#bind)
   - [Template](#template)
 
@@ -83,9 +83,9 @@ class MyClass
 C++11 new features:
   - add `move` constructor and `move` assignment operator
   - allow to define constructor, destructor, assignment each by
-    - `= default`: keep the default behavour
+    - `= default`: keep the default behavior
     - `= delete`: forbidden the operation
-  - allow to qualify a methode with
+  - allow to qualify a method with
     - `override`: forbidden the overload
     - `final`: forbidden derivation
 
@@ -195,7 +195,7 @@ C++11 provide the move constructor and move assignment operator
 
 #### implementation when class contains pointer
 
-The idea behind the `move` constructor is to tranfer the ownerchip of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost cpu.
+The idea behind the `move` constructor is to transfer the ownership of pointer (or stl container) of the class instead of copy them. Hence, we save a copy that may cost CPU.
 
 Hereafter is a good implementation when the class carry a pointer
 
@@ -302,7 +302,7 @@ after fct : v3=4 5 6
 
 ## Function
 
-### Functor and Lamdba expression
+### Functor and Lambda expression
 
 Definition:
  - a functor(C++98) is a object with overload of operator `()`
@@ -396,9 +396,9 @@ int main()
 </table>
 
 
-### Lamda expression closure
+### Lambda expression closure
 
-In lamba functon, the syntaxe `[]` is called the ''closure''.
+The syntax `[]` if a lambda function is called the ''closure''.
 
 It define how to capture local variables : by reference, by value, all variables, only one.
 
@@ -449,9 +449,9 @@ int main()
 
 The `std::bind` function is part of  `<functional>`.
 
-It allow to create a new fonction by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
+It allow to create a new function by wrapping an existing one i.e changing the signature, in order to reduce the number of parameters.
 
-The binded function may be a function, functor, or method of object.
+The bind object may be a function, functor, or method.
 
 
 ```C
