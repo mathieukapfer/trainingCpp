@@ -1,14 +1,16 @@
+
 # Training C++11
   - [Class](#class)
-    - [Canonical class declaration](#canonical_class_declaration)
+    - [Canonical class declaration](#canonical-class-declaration)
     - [Usages](#usages)
-    - [Move](#move_implementation)
-       - [implementation when class contains pointer](#implementation_when_class_contains_pointer)
-       - [implementation when class contain stl container](#implementation_when_class_contains_stl_container)
-       - [implicit call on RVALUE](implicit_call_on_rvalue)
+    - [Move](#move)
+       - [implementation when class contains pointer](#implementation-when-class-contains-pointer)
+       - [implementation when class contain stl container](#implementation-when-class-contains-stl-container)
+       - [implicit call on RVALUE](implicit-call-on-rvalue)
   - [Function](#function)
-     - [Functor and Lamdba expression](#functor_and_lamdba_expression)
-     - [Lamda expression closure](#lamda_expression_closure)
+     - [Functor and Lamdba expression](#functor-and-lamdba-expression)
+     - [Lamda expression closure](#lamda-expression-closure)
+     - [Bind](#bind)
   - [Template](#template)
 
 ## Class
