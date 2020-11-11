@@ -151,6 +151,10 @@ int main(int argc, char *argv[])
   MyClass f1(2);           // user defined constr with 1 parameter
   MyClass f2{1};           // same as above
 
+  // test assignment operator
+  d = e;                   // copy assignment operator
+  e = std::move(d);        // move assignment operator
+
   // ! warning the code below is the declaration
   //   of a function. It do nothing !
   MyClass x();
