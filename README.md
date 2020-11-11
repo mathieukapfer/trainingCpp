@@ -1,7 +1,15 @@
 # Training C++11
-  - [class](#class)
-  - [function](#function)
-  - [template](#template)
+  - [Class](#class)
+    - [Canonical class declaration](#canonical_class_declaration)
+    - [Usages](#usages)
+    - [Move](#move_implementation)
+       - [implementation when class contains pointer](#implementation_when_class_contains_pointer)
+       - [implementation when class contain stl container](#implementation_when_class_contains_stl_container)
+       - [implicit call on RVALUE](implicit_call_on_rvalue)
+  - [Function](#function)
+     - [Functor and Lamdba expression](#functor_and_lamdba_expression)
+     - [Lamda expression closure](#lamda_expression_closure)
+  - [Template](#template)
 
 ## Class
 ### Canonical class declaration
@@ -79,13 +87,8 @@ C++11 new features:
     - `override`: forbidden the overload
     - `final`: forbidden derivation
 
-
-### Move
-
-C++11 provide the move constructor and move assignment operator
-
-#### declaration and explicite call
-Hereafter is how the declaration looks like and when it is used (note that the 'move' implementation are not effective here)
+### Usages
+Have a look on when each canonical method is called (note that the implementations are not effective here, but just a log is print)
 
 <table>
   <tr>
@@ -141,12 +144,14 @@ int main(int argc, char *argv[])
 {
   // test constr
   MyClass c;               // default constr
-  MyClass x();             // ! warning this is the declaration
-                           //   of a function !
   MyClass d(c);            // copy constr
   MyClass e(std::move(c)); // move constr
   MyClass f1(2);           // user defined constr with 1 parameter
   MyClass f2{1};           // same as above
+
+  // ! warning the code below is the declaration
+  //   of a function. It do nothing !
+  MyClass x();
 }
 
 ```
@@ -176,6 +181,10 @@ operator= move
 </tr>
 </table>
 
+
+### Move
+
+C++11 provide the move constructor and move assignment operator
 
 #### implementation when class contains pointer
 
@@ -209,17 +218,15 @@ class BigClass
 }
 ```
 
-#### implementation when class contain stl container
+#### implementation when class contains stl container
 
 Just use the slt `std::move(x)` methode on each member.
 
-#### explicite VS implicite call : the concept of RVALUE
+#### implicit call on RVALUE
 
-##### implicit call
- `move` constructor or operator is automatically called by compiler on RVALUE
-
-##### explicit call
- `move` can be explicitly called by `std::move` (that return a RVALUE!)
+Definition:
+  - implicit call: `move` constructor or operator is automatically called by compiler on RVALUE. An example of RVALUE is the return value of a function. (more on expression, gvalue, rvalue, lvalue, ...[here](https://docs.microsoft.com/fr-fr/cpp/cpp/lvalues-and-rvalues-visual-cpp?view=msvc-160)
+  - explicit call: `move` can be explicitly called with `std::move` (that return a RVALUE!)
 
 <table>
   <tr>
@@ -288,12 +295,13 @@ after fct : v3=4 5 6
 
 ## Function
 
-### Functor (C++98) and Lamdba expression (C++11)
+### Functor and Lamdba expression
 
-Definition
- - a functor is a object with overload of operator `()`
- - a lambda expression is a function without name. It is also called anonymous function
+Definition:
+ - a functor(C++98) is a object with overload of operator `()`
+ - a lambda expression (C++11) is a function without name, also called anonymous function.
 
+Usage:
 The two pieces of code do the same thing
   - create and initialize a vector of 3 int
   - display it
@@ -381,7 +389,7 @@ int main()
 </table>
 
 
-### More on lamda expression : the closure
+### Lamda expression closure
 
 In lamba functon, the syntaxe `[]` is called the ''closure''.
 
