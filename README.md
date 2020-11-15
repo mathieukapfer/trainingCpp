@@ -11,7 +11,7 @@
      - [Functor and Lambda expression](#functor-and-lambda-expression)
      - [Lambda expression closure](#lambda-expression-closure)
      - [Bind](#bind)
-  - [Template](#template)
+  - [Template](#template) TODO !
 
 ## Class
 ### Canonical class declaration
