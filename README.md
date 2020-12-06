@@ -1,19 +1,10 @@
+http://mathieukapfer.github.io/trainingCpp
+
+# Training C++11
 1. The generated Toc will be an ordered list
 {:toc}
 
-# Training C++11
-  - [Class](#class)
-    - [Canonical class declaration](#canonical-class-declaration)
-    - [Usages](#usages)
-    - [Move](#move)
-       - [implementation when class contains pointer](#implementation-when-class-contains-pointer)
-       - [implementation when class contain stl container](#implementation-when-class-contains-stl-container)
-       - [implicit call on RVALUE](#implicit-call-on-rvalue)
-  - [Function](#function)
-     - [Functor and Lambda expression](#functor-and-lambda-expression)
-     - [Lambda expression closure](#lambda-expression-closure)
-     - [Bind](#bind)
-  - [Template](#template) TODO !
+TODO: add template (including variadic parameters)
 
 ## Class
 ### Canonical class declaration
