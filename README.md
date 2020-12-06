@@ -1,6 +1,6 @@
-http://mathieukapfer.github.io/trainingCpp
+https://mathieukapfer.github.io/trainingCpp
 
-# Training C++11
+# C++11
 1. The generated Toc will be an ordered list
 {:toc}
 
