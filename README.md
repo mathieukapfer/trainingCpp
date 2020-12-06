@@ -25,7 +25,7 @@
 
 <div markdown="1">
 
-```C++
+```c++
 class MyClass
 {
  public:
@@ -50,7 +50,7 @@ class MyClass
 <td>
 <div markdown="1">
 
-```C++
+```c++
 class MyClass
 {
  public:
@@ -99,7 +99,7 @@ Let's inspect when each canonical method is called.
 
 <div markdown="1">
 
-```C
+```c++
 class MyClass
 {
  public:
@@ -142,7 +142,7 @@ class MyClass
 <td>
 <div markdown="1">
 
-```C++
+```c++
 int main(int argc, char *argv[])
 {
   // test constr
@@ -199,7 +199,7 @@ The idea behind the `move` constructor is to transfer the ownership of pointer (
 
 Hereafter is a good implementation when the class carry a pointer
 
-```C++
+```c++
 class BigClass
 {
 
@@ -240,7 +240,7 @@ Definition:
   <td>
   <div markdown="1">
 
-```C++
+```c++
 
 #include <vector>
 #include <iostream>
@@ -323,7 +323,7 @@ The two pieces of code do the same thing
 
 <div markdown="1">
 
-```C++
+```c++
 
 #include <algorithm>  // for_each (C++98)
 #include <vector>
@@ -368,7 +368,7 @@ int main()
 <td>
 <div markdown="1">
 
-```C
+```c++
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -422,7 +422,7 @@ It define how to capture local variables : by reference, by value, all variables
 <td>
 <div markdown="1">
 
-```C
+```c++
 int main()
 {
   // stl container
@@ -454,7 +454,7 @@ It allow to create a new function by wrapping an existing one i.e changing the s
 The bind object may be a function, functor, or method.
 
 
-```C
+```c++
 #include <functional>
 #include <iostream>
 
