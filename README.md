@@ -1,3 +1,5 @@
+1. The generated Toc will be an ordered list
+{:toc}
 
 # Training C++11
   - [Class](#class)
