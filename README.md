@@ -4,7 +4,45 @@ https://mathieukapfer.github.io/trainingCpp
 1. The generated Toc will be an ordered list
 {:toc}
 
-TODO: add template (including variadic parameters)
+
+## Type inference and range-based for loop
+Let's start with the nice and consise way to write loop ! 
+<table>
+<tr>
+<th> C++98 style </th>
+<th> C++11 style </th>
+</tr>
+<tr>
+<td>
+
+<div markdown="1">
+
+```c++
+  // C++97
+  for (std::vector<int>::iterator it=v.begin(); 
+       it != v.end(); it++) {
+    std::cout << *it << std::endl;
+  }
+```
+
+</div>
+</td>
+<td>
+<div markdown="1">
+
+```c++
+  for (auto i: v) {
+    std::cout << i << std::endl;
+  }
+```
+
+</div>
+</td>
+</tr>
+</table>
+
+
+
 
 ## Class
 ### Canonical class declaration
@@ -79,7 +117,7 @@ C++11 new features:
     - `= default`: keep the default behavior
     - `= delete`: forbidden the operation
   - allow to qualify a method with
-    - `override`: forbidden the overload
+    - `override`: check the methode overwrite parent's one
     - `final`: forbidden derivation
 
 ### Usages
