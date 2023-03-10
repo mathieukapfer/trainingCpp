@@ -18,7 +18,6 @@ Let's start with the nice and consise way to write loop !
 <div markdown="1">
 
 ```c++
-  // C++97
   for (std::vector<int>::iterator it=v.begin(); 
        it != v.end(); it++) {
     std::cout << *it << std::endl;
