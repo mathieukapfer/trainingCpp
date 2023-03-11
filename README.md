@@ -4,9 +4,47 @@ https://mathieukapfer.github.io/trainingCpp
 1. The generated Toc will be an ordered list
 {:toc}
 
+## Loop
 
-## Type inference and range-based for loop
-Let's start with the nice and consise way to write loop ! 
+### Initialization
+Stl container with initialisation list (as table)
+
+<table>
+<tr>
+<th> C++98 style </th>
+<th> C++11 style </th>
+</tr>
+<tr>
+<td>
+
+<div markdown="1">
+
+```c++
+  std::vector<int> v;
+
+  v.push_back(1);
+  v.push_back(2);
+  v.push_back(3);
+```
+
+</div>
+</td>
+<td>
+<div markdown="1">
+
+```c++
+    // stl container with initialisation list (as table)
+  std::vector<int> v = {1, 2, 3};
+```
+
+</div>
+</td>
+</tr>
+</table>
+
+
+### Type inference and range-based for loop
+Nice and consise way to write loop ! 
 <table>
 <tr>
 <th> C++98 style </th>
